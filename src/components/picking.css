@@ -1,0 +1,92 @@
+.picking {
+    position: relative;
+    width: min(500px, 100%);
+    height: 100%;
+    margin: 0 auto;
+}
+.picking.spin { 
+    animation: spin .8s ease 1 both;
+}
+
+.circle {
+    position: absolute;
+    z-index: 10;
+    width: 40%;
+    aspect-ratio: 1 / 1;
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity .3s ease;
+    user-select: none;
+}
+
+.circle:first-child {
+    left: 0;
+    top: .5rem;
+    background-color: var(--paper-to);
+    box-shadow: 0 8px 0 var(--paper-from);
+}
+.circle:first-child:active { box-shadow: 0 3px 0 var(--paper-from); }
+.circle:first-child:active .pick-img {  box-shadow: 0 3px 0 inset var(--cyan-to); }
+
+.circle:nth-child(2) {
+    background-color: var(--scissors-to);
+    box-shadow: 0 8px 0 var(--scissors-from);
+    right: 0;
+    top: .5rem;
+}
+.circle:nth-child(2):active { box-shadow: 0 3px 0 var(--scissors-from);}
+.circle:nth-child(2):active .pick-img {  box-shadow: 0 3px 0 inset var(--cyan-to); }
+
+.circle:last-child {
+    background-color: var(--rock-to);
+    box-shadow: 0 8px 0 var(--rock-from);
+
+    top: calc( 90% - 40% );
+    left: 50%;
+    transform: translateX(-50%);
+}
+.circle:last-child:active { 
+    box-shadow: 0 3px 0 var(--rock-from);
+    transform: translate(-50%, 5px);
+}
+.circle:last-child:active .pick-img {  box-shadow: 0 3px 0 inset var(--cyan-to); }
+
+.circle:hover { opacity: .8; }
+.circle:active:not(.circle:last-child)  { transform: translateY(5px); }
+
+.pick-img {
+    width: 100%;
+    height: 100%;
+
+    background-color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+
+    box-shadow: 0 8px 0 inset var(--cyan-to);
+
+    & img {
+        width: min(100%, 50%);
+        object-fit: contain;
+        scale: 1.1;
+    }
+}
+
+.circle:hover {
+    opacity: .7;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(720deg) scale(1);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(0);
+    }
+}

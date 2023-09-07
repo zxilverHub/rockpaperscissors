@@ -1,0 +1,170 @@
+.result {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 3rem;
+}
+
+.item-picked {
+    position: relative;
+    width: 200px;
+    aspect-ratio: 1 / 1;
+    padding: 1.5rem;
+    border-radius: 50%;
+
+    color: white;
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    text-align: center;
+    white-space: nowrap;
+    scale: 1.5;
+}
+
+.item-picked:first-child::before,
+.item-picked:last-child::before {
+    content: "YOUR PICKED";
+
+    position: absolute;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.item-picked:last-child::before {
+    content: "THE HOUSE PICKED";
+}
+
+.inner-item {
+    background-color: white;
+    box-shadow: 0 8px 0 inset rgb(217, 217, 217);
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    & img {
+        scale: 1.5;
+    }
+}
+
+.scissors {
+    background-color: var(--scissors-to);
+    box-shadow: 0 8px 0 var(--scissors-from);
+}
+
+.rock {
+    background-color: var(--rock-to);
+    box-shadow: 0 8px 0 var(--rock-from);
+}
+
+.paper {
+    background-color: var(--paper-to);
+    box-shadow: 0 8px 0 var(--paper-from);
+}
+
+.winner{ position: relative; }
+.winner::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: 0%;
+    height: 0%;
+    border-radius: 50%;
+
+    opacity: .3;
+    animation: fullSize .6s ease 1s 1 forwards;
+}
+
+.play-again {
+    position: relative;
+    z-index: 5;
+    width: 0px;
+    min-width: 0px;
+    margin-inline: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    color: white;
+    animation: delayer 1s ease 1.2s 1 forwards;
+    white-space: nowrap;
+    overflow: hidden;
+    
+    & p {
+        font-size: clamp(2rem, 3vw, 4rem);
+    }
+
+    .play-again-btn {
+        width: 100%;
+        padding: .8rem;
+        color: var(--dark-text);
+        font-size: clamp(1.2rem, 1.3vw, 1.5rem);
+        font-weight: var(--weight-lg);
+        background-color: white;
+        border-radius: 7px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: all .3s ease;
+    }
+
+    .play-again-btn:active {
+        background-color: var(--cyan-to);
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .play-again {
+        position: absolute;
+        bottom: 0% !important;
+        left: 35% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .item-picked {
+        scale: 1;
+    }
+}
+
+@keyframes delayer {
+    from {
+        width: 0px;
+        margin-inline: 0;
+    }
+
+    to {
+        width: 200px;
+        margin-inline: 4rem;
+    }
+}
+
+@keyframes fullSize {
+    from {
+        width: 0%;
+        height: 0%;
+        box-shadow: none;
+    }
+
+    to {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 10px 20px #2C74B3,
+        0 0 10px 60px #205295,
+        0 0 10px 100px #144272,
+        0 0 10px 140px #0A2647;
+    }
+}

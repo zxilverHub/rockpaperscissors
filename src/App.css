@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+:root {
+  --scissors-from: #ec9e0e;
+  --scissors-to: #eca922;
+  --paper-from: #4865f4;
+  --paper-to: #5671f5;
+  --rock-from: #dc2e4e;
+  --rock-to: #dd405d;
+  --lizard-from: #834fe3;
+  --lizard-to: #8c5de5;
+  --cyan-from: #40b9ce;
+  --cyan-to: #52bed1;
+
+  --dark-text: #3b4363;
+  --score-text: #2a46c0;
+  --outline: #606e85;
+
+  --bg-from: #1f3756;
+  --bg-to: #141539;
+
+  --weight-sm: 600;
+  --weight-lg: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: var(--weight-sm);
+}
+
+body {
+  width: 100%;
+  max-width: 1600px;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  max-height: 100vh;
+  margin: 0 auto;
+
+  background: radial-gradient(
+    circle at top,
+    var(--bg-from),
+    var(--bg-to)
+  );
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.main-game {
+  width: 60%;
+  max-width: 900px;
+  height: 450px;
+  margin: 5rem auto 0 auto;
+}
+
+.rules-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+
+  border: 3px solid var(--outline);
+  border-radius: 8px;
+  background: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: var(--weight-lg);
+  padding: .7rem 2rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.none {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .main-game {
+    width: 95%;
+  }
+}
